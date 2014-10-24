@@ -27,7 +27,7 @@
       this.keys = [];
 
       // build and save templates
-      this.element.addClass("ui-notify").children().addClass("ui-notify-message ui-notify-message-style").each(function(i){
+      $.each(this.element.addClass("ui-notify").children().addClass("ui-notify-message ui-notify-message-style"), function(i) {
         var key = this.id || i;
         self.keys.push(key);
         self.templates[key] = $(this).removeAttr("id").wrap("<div></div>").parent().html(); // because $(this).andSelf().html() no workie
@@ -51,7 +51,7 @@
       this.openNotifications = this.openNotifications || 0;
 
       // return a new notification instance
-      return new $.ech.notify.instance(this)._create(msg, $.extend({}, this.options, opts), tpl);            
+      return new $.ech.notify.instance(this)._create(msg, $.extend({}, this.options, opts), tpl);
     }
   });
 
